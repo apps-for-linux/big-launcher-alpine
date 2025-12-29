@@ -12,6 +12,6 @@ sudo chroot ./alp/root/ /bin/ash -l -c "apk update && apk upgrade && apk add sdl
 sudo git clone https://github.com/complexlogic/big-launcher.git
 cd big-launcher
 sudo mkdir build && cd build
-cmake ..
-make
+sudo cmake -B ..
+sudo make
 ARCH=x86_64 VERSION=clean ./appimagetool -n ./alp/
