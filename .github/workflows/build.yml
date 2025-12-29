@@ -24,7 +24,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      - name: Make Binary
+      - name: Make AppImage
         run: |
           chmod a+x build.sh
           ./build.sh
@@ -32,14 +32,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Binary
-          path: 'dist/*big-launcher*'
-
-      - name: Upload version artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: version
-          path: 'dist/version'
+          name: AppImage
+          path: 'dist/*.AppImage*'
 
   release:
     needs: [build]
@@ -48,10 +42,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download Binary artifact
+      - name: Download AppImage artifact
         uses: actions/download-artifact@v4
         with:
-          name: Binary
+          name: AppImage
 
       - name: Delete Previous Release
         run: |
@@ -70,6 +64,6 @@ jobs:
           generate_release_notes: false
           make_latest: true
           files: |
-            *big-launcher*
+            *.AppImage*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
