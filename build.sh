@@ -5,9 +5,9 @@ wget -q "https://dl-cdn.alpinelinux.org/alpine/edge/releases/x86_64/alpine-minir
 mkdir alp
 mkdir -p ./alp/root/
 tar xf alpine.tar.gz -C ./alp/root/
-sudo mount -t proc none ./alp/proc/
-sudo mount --rbind /dev ./alp/dev/
-sudo mount --rbind /sys ./alp/sys/
+sudo mount -t proc none ./alp/root/proc/
+sudo mount --rbind /dev ./alp/root/dev/
+sudo mount --rbind /sys ./alp/root/sys/
 cp /etc/resolv.conf -t ${GITHUB_WORKSPACE}/alp/root/etc/
 cd ${GITHUB_WORKSPACE}
 echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> ./alp/root/etc/apk/repositories
