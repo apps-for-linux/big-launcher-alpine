@@ -5,13 +5,18 @@ wget -q "https://dl-cdn.alpinelinux.org/alpine/edge/releases/x86_64/alpine-minir
 mkdir alp
 mkdir -p ./alp/root/
 tar xf alpine.tar.gz -C ./alp/root/
+sudo mount --bind /proc ./alp/root/proc/
+sudo mount --bind /dev ./alp/root/dev/
+sudo mount --bind /sys ./alp/root/sys/
 cp /etc/resolv.conf -t ${GITHUB_WORKSPACE}/alp/root/etc/
 cd ${GITHUB_WORKSPACE}
 echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> ./alp/root/etc/apk/repositories
-sudo chroot ./alp/root/ /bin/ash -l -c "apk update && apk upgrade && apk add sdl3 sdl3_ttf sdl3_image make cmake libarchive harfbuzz spdlog fmt libxml2 inih"
-sudo git clone https://github.com/complexlogic/big-launcher.git
-cd big-launcher
-sudo mkdir build && cd build
-sudo cmake -B ..
-sudo make
+sudo chroot ./alp/root/ /bin/sh -c "apk update && apk upgrade && apk add font-noto pkgconfig git build-base sdl3-dev sdl3_ttf-dev sdl3_image-dev make cmake libarchive harfbuzz fmt fmt-dev libxml2 libxml2-dev inih spdlog-dev spdlog && git clone https://github.com/complexlogic/big-launcher.git && cd big-launcher && mkdir build && cd build && cmake .. && make && exit"
+cp ${GITHUB_WORKSPACE}/icon.png ./alp/ && cp ${GITHUB_WORKSPACE}/Big-Launcher.desktop ./alp/ && cp ${GITHUB_WORKSPACE}/AppRun ./alp/ && chmod a+x ./alp/AppRun && cp ${GITHUB_WORKSPACE}NotoSans-Medium.ttf ./alp/root/usr/share/fonts/noto/
+sudo umount -lf ./alp/root/proc
+sudo umount -lf ./alp/root/sys
+sudo umount -lf ./alp/root/dev
 ARCH=x86_64 VERSION=clean ./appimagetool -n ./alp/
+cd ${GITHUB_WORKSPACE}
+mkdir dist
+sudo find . -type f -executable -iname "*.AppImage*" | xargs -i -t -exec cp {} ./dist/

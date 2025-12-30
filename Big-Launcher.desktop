@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=big-launcher
+Icon=icon
+Name=Big-Launcher
+StartupNotify=true
+Terminal=false
+Categories=System;
+Type=Application
