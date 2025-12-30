@@ -28,9 +28,9 @@ cd build \
 cmake .. \
 make \
 exit"
-cp ${GITHUB_WORKSPACE}/icon.png ./alp/ \
-cp ${GITHUB_WORKSPACE}/Big-Launcher.desktop ./alp/ \
-cp ${GITHUB_WORKSPACE}/AppRun ./alp/ \
+cp ${GITHUB_WORKSPACE}/icon.png ./alp/
+cp ${GITHUB_WORKSPACE}/Big-Launcher.desktop ./alp/
+cp ${GITHUB_WORKSPACE}/AppRun ./alp/
 chmod a+x ./alp/AppRun \
 # cp ${GITHUB_WORKSPACE}NotoSans-Medium.ttf ./alp/root/usr/share/fonts/noto/
 sudo umount -lf ./alp/root/proc
