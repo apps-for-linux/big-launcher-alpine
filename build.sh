@@ -11,16 +11,16 @@ sudo mount --bind /sys ./alp/root/sys/
 cp /etc/resolv.conf -t ${GITHUB_WORKSPACE}/alp/root/etc/
 cd ${GITHUB_WORKSPACE}
 echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> ./alp/root/etc/apk/repositories
-sudo chroot ./alp/root/ /bin/sh -c "apk update \
-apk upgrade \
-apk add pkgconfig git build-base sdl3-dev sdl3_ttf-dev sdl3_image-dev \ 
-make cmake libarchive harfbuzz fmt fmt-dev libxml2 libxml2-dev inih spdlog-dev spdlog \
-git clone https://github.com/complexlogic/big-launcher.git \
+sudo chroot ./alp/root/ /bin/sh -c "apk update && \
+apk upgrade && \
+apk add pkgconfig git build-base sdl3-dev sdl3_ttf-dev sdl3_image-dev && \ 
+make cmake libarchive harfbuzz fmt fmt-dev libxml2 libxml2-dev inih spdlog-dev spdlog && \
+git clone https://github.com/complexlogic/big-launcher.git && \
 sed -i 's:@ICONS_DIR@:/usr/share/big-launcher/&:' "./big-launcher/config/layout.xml.in"
 sed -i 's:assets/background.svg:/usr/share/big-launcher/&:' "./big-launcher/config/config.ini.in"
 cd big-launcher \
-wget https://github.com/complexlogic/big-launcher/files/10326572/assets.zip
-tar -xf assets.zip
+wget https://github.com/complexlogic/big-launcher/files/10326572/assets.zip \
+tar -xf assets.zip \
 rm assets.zip \
 mkdir build \
 cd build \
