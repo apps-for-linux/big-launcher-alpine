@@ -22,7 +22,7 @@ fmt-dev libxml2 libxml2-dev inih spdlog-dev spdlog
 git clone https://github.com/complexlogic/big-launcher.git
 cd big-launcher
 wget https://github.com/complexlogic/big-launcher/files/10326572/assets.zip
-tar -xf assets.zip
+unzip assets.zip
 rm assets.zip
 mkdir build
 cd build
@@ -33,7 +33,6 @@ cp ${GITHUB_WORKSPACE}/icon.png ./alp/
 cp ${GITHUB_WORKSPACE}/Big-Launcher.desktop ./alp/
 cp ${GITHUB_WORKSPACE}/AppRun ./alp/
 chmod a+x ./alp/AppRun \
-# cp ${GITHUB_WORKSPACE}NotoSans-Medium.ttf ./alp/root/usr/share/fonts/noto/
 sudo umount -lf ./alp/root/proc
 sudo umount -lf ./alp/root/sys
 sudo umount -lf ./alp/root/dev
