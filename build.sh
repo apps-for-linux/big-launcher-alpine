@@ -32,6 +32,7 @@ exit"
 cp ${GITHUB_WORKSPACE}/icon.png ./alp/
 cp ${GITHUB_WORKSPACE}/Big-Launcher.desktop ./alp/
 cp ${GITHUB_WORKSPACE}/AppRun ./alp/
+cp ${GITHUB_WORKSPACE}/proot ./alp/
 chmod a+x ./alp/AppRun
 sudo umount -lf ./alp/root/proc
 sudo umount -lf ./alp/root/sys
