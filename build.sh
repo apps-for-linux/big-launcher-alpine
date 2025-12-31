@@ -29,11 +29,8 @@ cd build
 cmake ..
 make
 exit"
-cp ${GITHUB_WORKSPACE}/icon.png ./alp/
-cp ${GITHUB_WORKSPACE}/Big-Launcher.desktop ./alp/
-cp ${GITHUB_WORKSPACE}/AppRun ./alp/
-cp ${GITHUB_WORKSPACE}/proot ./alp/
-chmod a+x ./alp/AppRun
+cp ${GITHUB_WORKSPACE}/{icon.png,Big-Launcher.desktop,AppRun,proot} ./alp/
+chmod a+x ./alp/AppRun ./alp/proot 
 sudo umount -lf ./alp/root/proc
 sudo umount -lf ./alp/root/sys
 sudo umount -lf ./alp/root/dev
