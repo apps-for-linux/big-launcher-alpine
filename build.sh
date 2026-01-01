@@ -2,7 +2,7 @@
 
 set -euxo pipefail
 
-dir=$(PWD)
+dir=$(pwd)
 sudo apt-get install desktop-file-utils debootstrap schroot perl git wget curl xz-utils bubblewrap autoconf coreutils
 wget -q "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage" -O appimagetool && chmod a+x appimagetool
 wget -q "https://dl-cdn.alpinelinux.org/alpine/edge/releases/x86_64/alpine-minirootfs-20251224-x86_64.tar.gz" -O alpine.tar.gz
