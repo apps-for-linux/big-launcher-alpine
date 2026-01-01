@@ -19,11 +19,16 @@ apk upgrade && \
 apk add pkgconfig git build-base sdl3-dev sdl3_ttf-dev sdl3_ttf \
 sdl3_image-dev make cmake libarchive harfbuzz fmt \
 fmt-dev libxml2 libxml2-dev inih spdlog-dev spdlog
-git clone https://github.com/complexlogic/big-launcher.git
-cd big-launcher
+mkdir -p /usr/share/big-launcher
+cd  /usr/share/big-launcher
 wget https://github.com/complexlogic/big-launcher/files/10326572/assets.zip
 unzip assets.zip
 rm assets.zip
+cd alp/root
+git clone https://github.com/complexlogic/big-launcher.git
+cd big-launcher
+sed -i 's:@ICONS_DIR@:/usr/share/big-launcher/&:' "./config/layout.xml.in"
+sed -i 's:assets/background.svg:/usr/share/big-launcher/&:' "./big-launcher/config/config.ini.in"
 mkdir build
 cd build
 cmake ..
