@@ -21,15 +21,15 @@ sdl3_image-dev make cmake libarchive harfbuzz fmt \
 fmt-dev libxml2 libxml2-dev inih spdlog-dev spdlog
 mkdir -p /usr/share/big-launcher
 cd  /usr/share/big-launcher
-echo $pwd
+pwd
 wget https://github.com/complexlogic/big-launcher/files/10326572/assets.zip
 unzip assets.zip
 rm assets.zip
 cd alp/root
-echo $pwd
+pwd
 git clone https://github.com/complexlogic/big-launcher.git
 cd big-launcher
-echo $pwd
+pwd
 sed -i 's:@ICONS_DIR@:/usr/share/big-launcher/&:' "./config/layout.xml.in"
 sed -i 's:assets/background.svg:/usr/share/big-launcher/&:' "./big-launcher/config/config.ini.in"
 mkdir build
