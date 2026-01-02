@@ -2,4 +2,4 @@
 
 HERE=$(dirname $(readlink -f "${0}"))
 
-$HERE/proot -R $HERE/root /big-launcher/build/big-launcher -l /big-launcher/build/layout.xml -c /big-launcher/build/config.ini "$@"
+$HERE/proot -R $HERE/root /big-launcher/build/big-launcher -l ~/.config/big-launcher/layout.xml -c /big-launcher/build/config.ini "$@"
