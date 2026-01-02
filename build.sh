@@ -24,7 +24,7 @@ cd  /usr/share/big-launcher
 wget https://github.com/complexlogic/big-launcher/files/10326572/assets.zip
 unzip assets.zip
 rm assets.zip
-cd ./alp/root
+cd ../../..
 git clone https://github.com/complexlogic/big-launcher.git
 cd big-launcher
 sed -i 's:@ICONS_DIR@:/usr/share/big-launcher/&:' "./config/layout.xml.in"
