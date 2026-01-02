@@ -19,10 +19,9 @@ apk upgrade && \
 apk add pkgconfig git build-base sdl3-dev sdl3_ttf-dev sdl3_ttf \
 sdl3_image-dev make cmake libarchive harfbuzz fmt fmt-dev libxml2 \
 libxml2-dev inih spdlog-dev spdlog libwebpdemux
-mkdir -p /usr/share/big-launcher
-cd  /usr/share/big-launcher
 git clone https://github.com/complexlogic/big-launcher.git
-cd big-launchermkdir build
+cd big-launcher
+mkdir build
 cd build
 wget https://github.com/complexlogic/big-launcher/files/10326572/assets.zip
 unzip assets.zip
