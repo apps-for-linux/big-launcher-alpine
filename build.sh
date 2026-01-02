@@ -2,7 +2,6 @@
 
 set -euxo pipefail
 
-dir=$(pwd)
 sudo apt-get install desktop-file-utils debootstrap schroot perl git wget curl xz-utils bubblewrap autoconf coreutils
 wget -q "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage" -O appimagetool && chmod a+x appimagetool
 wget -q "https://dl-cdn.alpinelinux.org/alpine/edge/releases/x86_64/alpine-minirootfs-20251224-x86_64.tar.gz" -O alpine.tar.gz
@@ -22,15 +21,12 @@ sdl3_image-dev make cmake libarchive harfbuzz fmt \
 fmt-dev libxml2 libxml2-dev inih spdlog-dev spdlog
 mkdir -p /usr/share/big-launcher
 cd  /usr/share/big-launcher
-echo $dir
 wget https://github.com/complexlogic/big-launcher/files/10326572/assets.zip
 unzip assets.zip
 rm assets.zip
-cd alp/root
-echo $dir
+cd ./alp/root
 git clone https://github.com/complexlogic/big-launcher.git
 cd big-launcher
-echo $dir
 sed -i 's:@ICONS_DIR@:/usr/share/big-launcher/&:' "./config/layout.xml.in"
 sed -i 's:assets/background.svg:/usr/share/big-launcher/&:' "./big-launcher/config/config.ini.in"
 mkdir build
