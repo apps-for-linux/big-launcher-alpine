@@ -17,20 +17,16 @@ echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> ./alp/root/etc/apk/r
 sudo chroot ./alp/root/ /bin/sh -c "apk update && \
 apk upgrade && \
 apk add pkgconfig git build-base sdl3-dev sdl3_ttf-dev sdl3_ttf \
-sdl3_image-dev make cmake libarchive harfbuzz fmt \
-fmt-dev libxml2 libxml2-dev inih spdlog-dev spdlog
+sdl3_image-dev make cmake libarchive harfbuzz fmt fmt-dev libxml2 \
+libxml2-dev inih spdlog-dev spdlog libwebpdemux
 mkdir -p /usr/share/big-launcher
 cd  /usr/share/big-launcher
+git clone https://github.com/complexlogic/big-launcher.git
+cd big-launchermkdir build
+cd build
 wget https://github.com/complexlogic/big-launcher/files/10326572/assets.zip
 unzip assets.zip
 rm assets.zip
-cd ../../..
-git clone https://github.com/complexlogic/big-launcher.git
-cd big-launcher
-sed -i 's:@ICONS_DIR@:/usr/share/big-launcher/&:' "./config/layout.xml.in"
-sed -i 's:assets/background.svg:/usr/share/big-launcher/&:' "./big-launcher/config/config.ini.in"
-mkdir build
-cd build
 cmake ..
 make
 exit"
